@@ -1,0 +1,44 @@
+.aisp-iam-ui-container {
+  padding: 20px;
+  .card {
+    background-color: #fff;
+    /deep/ .el-input {
+      color: #01204b;
+    }
+  }
+  .table {
+    background-color: #fff;
+    padding: 20px;
+  }
+}
+.search {
+  padding: 20px;
+  justify-content: space-between;
+  .el-input {
+    margin-right: 20px;
+  }
+  .el-button+.el-button {
+    margin-left: 20px;
+  }
+}
+.flex-row {
+  display: flex;
+}
+.mb20 {
+  margin-bottom: 20px;
+}
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+.dialog-delete {
+  font-size: 16px;
+  span {
+    color: #ff0000;
+  }
+}
+.dialog-permission {
+  /deep/ .el-tabs__content {
+    min-height: 400px;
+  }
+}
