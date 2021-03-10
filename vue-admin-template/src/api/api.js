@@ -18,6 +18,7 @@ export default {
   getCaseList: '/testCase/getCasePage', // 测试用例分页查询
   deleteCasebyId: '/testCase/deleteCase', // 删除测试用例
   getCaseById: '/testCase/getCaseById', // 根据id查询测试用例详情
-  updateCaseById: '/testCase/updateCase'// 根据id更新测试用例详情
+  updateCaseById: '/testCase/updateCase', // 根据id更新测试用例详情
+  handleExportCases: '/testCase/export' // 根据测试任务id导出测试用例
 
 }

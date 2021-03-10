@@ -317,12 +317,12 @@
           {{ scope.row.endAt }}
         </template>
       </el-table-column>
-      <el-table-column label="总时长" width="200" align="center">
+      <el-table-column label="总时长" width="120" align="center">
         <template slot-scope="scope">
           {{ scope.row.duration }}
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="250" align="center">
+      <el-table-column label="操作" width="348" align="center">
         <template slot-scope="scope">
           <el-button
             v-waves
@@ -348,19 +348,21 @@
           >
             查看测试用例
           </el-button>
+          <el-button type="text"  @click="handleExportCases(scope.row.id)">导出用例</el-button>
           <el-upload
-            class="upload-demo"
-            action="https://jsonplaceholder.typicode.com/posts/"
-            :on-preview="handlePreview"
-            :on-remove="handleRemove"
-            :before-remove="beforeRemove"
-            multiple
-            :limit="3"
-            :on-exceed="handleExceed"
-            :file-list="fileList"
+            class="upload-btn margin-left-sm"
+            :show-file-list="false"
+            :action="`${importUrl}/testCase/${scope.row.serviceName}/${scope.row.id}/import`"
+            :before-upload="handleBeforUpload"
+            :on-success="
+              (res, file) => {
+                return handleImportSuccess(res, file, item)
+              }
+            "
           >
-            <el-button type="text">上传测试用例</el-button>
+            <el-button type="text" @click="handleImportSuccess">导入用例</el-button>
           </el-upload>
+
         </template>
       </el-table-column>
     </el-table>

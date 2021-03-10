@@ -52,3 +52,14 @@ export function getAllServiceName() {
 
   })
 }
+
+// 将该测试任务下的测试用例导入excel
+export function handleExportCases(id) {
+  return request({
+    url: `${api.handleExportCases}/${id}`,
+    method: 'get',
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+
+  })
+}
+

@@ -1,4 +1,4 @@
-import { createTask, deleteTask, getAllServiceName, getByTaskID, getTaskPage, updateTask } from '@/api/testtask'
+import { createTask, deleteTask, getAllServiceName, getByTaskID, getTaskPage, updateTask, handleExportCases } from '@/api/testtask'
 
 const defaultForm = {
   taskName: '',
@@ -52,6 +52,8 @@ export default {
         version: null
 
       },
+      listData: [],
+      importUrl: '',
       serviceNameList: [],
       addRule: { // 校验规则
         taskName: [
@@ -100,6 +102,7 @@ export default {
   },
   created() {
     this.fetchData()
+    this.importUrl = process.env.VUE_APP_BASE_API
   },
   methods:
     {
@@ -260,6 +263,40 @@ export default {
         this.$router.push({
           path: '/testcase',
           query: { taskId: taskId }
+        })
+      },
+      handleBeforUpload() {
+        this.loadingModal = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'li-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        })
+      },
+      handleImportSuccess(res) {
+        if (res.code * 1 === 0) {
+          this.$message({
+            message: '操作成功',
+            type: 'success'
+          })
+          this.fetchData()
+        } else {
+          this.$message.error(res.msg)
+        }
+        this.loadingModal.close()
+      },
+      // 手动导出测试用例到excel文件
+      handleExportCases(id) {
+        handleExportCases(id).then(res => {
+          if (res && res.code === 0) {
+            this.$notify({
+              title: '温馨提示',
+              message: '操作成功',
+              type: 'success'
+            })
+          } else {
+            this.$message.error(res.msg)
+          }
         })
       }
     }
