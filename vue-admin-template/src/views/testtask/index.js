@@ -287,17 +287,7 @@ export default {
       },
       // 手动导出测试用例到excel文件
       handleExportCases(id) {
-        handleExportCases(id).then(res => {
-          if (res && res.code === 0) {
-            this.$notify({
-              title: '温馨提示',
-              message: '操作成功',
-              type: 'success'
-            })
-          } else {
-            this.$message.error(res.msg)
-          }
-        })
+        window.location.href = process.env.VUE_APP_BASE_API + '/testCase/export/' + id
       }
     }
 
