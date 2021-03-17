@@ -6,7 +6,6 @@
           v-model="listPageForm.taskName"
           class="filter-item"
           placeholder="请输入测试任务名称"
-          @keyup.enter.native="handleFilter"
         />
       </el-form-item>
       <el-form-item label="测试人员">
@@ -14,7 +13,6 @@
           v-model="listPageForm.tester"
           class="filter-item"
           placeholder="请输入测试人员"
-          @keyup.enter.native="handleFilter"
         />
       </el-form-item>
       <el-form-item label="系统名称">

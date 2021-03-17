@@ -79,6 +79,19 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/',
+    component: Layout,
+    children: [
+      {
+        path: 'testtool',
+        name: 'TestTool',
+        component: () => import('@/views/testtool/index.vue'),
+        meta: { title: '小工具', icon: 'nested' }
+      }
+    ]
+  },
+
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
